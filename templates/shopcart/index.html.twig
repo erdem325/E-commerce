@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar %} {{ include('home/usersidebar.html.twig') }} {% endblock %}
+
+{% block content %}
+
+<div class="col-md-9">
+
+
+            {{ include('messages.html.twig') }}
+                <div class="col-md-12">
+                    <table class="table table-striped mt-3">
+                        <thead>
+                        <tr>
+                            <th>Ürün</th>
+                            <th>Ürün Adı</th>
+                            <th>Fiyatı</th>
+                            <th>Miktar</th>
+                            <th>Total</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% set total=0 %}
+                        {% for shopcart in shopcarts %}
+                            <tr>
+                                <td><img width="75" height="75" src="{{ asset('uploads') }}/images/{{ shopcart.image }}"/></td>
+                                <td>{{ shopcart.title }}</td>
+                                <td>{{ shopcart.pprice }}</td>
+                                <td>{{ shopcart.quantity }}</td>
+                                <td>{{ shopcart.quantity * shopcart.pprice }}</td>
+                                <td> {{ include('shopcart/_delete_form.html.twig') }}</td>
+                            </tr>
+                            {% set total=total+(shopcart.quantity * shopcart.pprice) %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="5"><b>Toplam Tutar: {{ total }} ₺</b> <br> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('orders_new') }}" class="add_cart_btn ">Satın Al</a>
+
+                </div></div></div></div>
+{% endblock %}

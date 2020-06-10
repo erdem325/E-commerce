@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <section class="feature_add_area">
+
+    <div class="container">
+        <div class="row feature_inner">
+            <hr class="soften">
+            <div>
+                <h1>Hakkımızda</h1>
+                <hr class="soften">
+            </div>
+            <hr class="soften">
+            <p>
+                {{ data[0].aboutus|raw }}
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

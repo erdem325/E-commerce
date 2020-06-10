@@ -1,0 +1,135 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card" style="padding:20px;">
+                        <h1 class="page-head-line">Ürün Özellikleri</h1>
+                        <section class="content">
+                                <div class="box">
+                                    {{ include('messages.html.twig') }}
+                                </div>
+
+
+                        </section>
+                        <form class="modal-form" method="post">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>Kategorisi</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="product[category_id]" class="form-control">
+                                        <option value="{{ product.categoryid }}">{{ catname[0].title }}</option>
+
+                                        {% for cat in catlist %}
+
+                                            <option value="{{ cat.id }}">{{ cat.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>Title</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="product[title]" value="{{  product.title  }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>description</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="product[description]" value="{{  product.description  }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>keywords</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="product[keywords]" value="{{  product.keywords  }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Satış Fiyatı</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="product[sprice]" value="{{  product.sprice  }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>İndirimli Fiyatı</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="product[pprice]" value="{{  product.pprice  }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>Miktar</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="product[amount]" value="{{  product.amount  }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Detay</label>
+                                    <br>
+                                    <textarea id="detail" name="product[detail]" rows="10" cols="85">{{  product.detail  }}</textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label> Status</label>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="product[status]" class="form-control">
+                                        <option>{{ product.status }}</option>
+                                        <option>True</option>
+                                        <option>False</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <a href="{{ path('admin_product_index') }}" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-arrow-left"> </span> Listeye Geri Dön</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-check"></span> Kaydet </button>
+                                </div>
+                            </div>
+                            <input type="text" name="product[image]" value="{{  product.image  }}" readonly hidden>
+
+
+                        </form>
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#detail' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block content %}
+    <h1>Messages index</h1>
+    <table class="table table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.subject }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.comment }}</td>
+                <td>{{ message.status }}</td>
+                <td>
+                    <a href="{{ path('admin_messages_show', {'id': message.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-search"></i>GÖSTER</a>
+                    {#<a href="{{ path('admin_messages_delete', {'id': message.id}) }}" class="btn btn-danger btn-block">SİL</a>#}
+                    {{ include('admin/messages/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

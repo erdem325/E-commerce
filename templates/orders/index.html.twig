@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block sidebar %} {{ include('home/usersidebar.html.twig') }} {% endblock %}
+{% block title %}Orders index{% endblock %}
+
+{% block content %}
+<div class="section" style="margin-left: 13%;">
+
+        <div class="row" >
+
+    <table class="table table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Shipinfo</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.name }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.shipinfo }}</td>
+                <td>{{ order.note }}</td>
+                <td>
+                    <a href="{{ path('orders_show', {'id': order.id}) }}" class="btn btn-primary btn-block">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div></div>
+{% endblock %}

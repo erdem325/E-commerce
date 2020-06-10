@@ -1,0 +1,79 @@
+  <aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="{{ path('admin') }}"><img src="{{ asset('admin') }}/images/logo.png" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="{{ asset('admin') }}/images/logo2.png" alt="Logo"></a>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ path('admin') }}"> <i class="menu-icon ti-home"></i>Anasayfa</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-shopping-cart"></i>Siparişler</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><a href="{{ path('admin_orders_index' , {'slug' : 'new'}) }}"><i class="menu-icon ti-plus"></i>Yeni Siparişler</a></li>
+                        <li><a href="{{ path('admin_orders_index' , {'slug' : 'accepted'}) }}"><i class="menu-icon ti-check-box"></i>Onaylanmış Siparişler</a></li>
+                        <li><a href="{{ path('admin_orders_index' , {'slug' : 'canceled'}) }}"><i class="menu-icon ti-close"></i>İptal Edilmiş Siparişler</a></li>
+                        <li><a href="{{ path('admin_orders_index' , {'slug' : 'inshipping'}) }}"><i class="menu-icon ti-truck"></i>Kargodaki Siparişler</a></li>
+                        <li><a href="{{ path('admin_orders_index' , {'slug' : 'complated'}) }}"><i class="menu-icon ti-check"></i>Teslim Edilmiş Siparişler</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ path('admin_product_index') }}"> <i class="menu-icon ti-menu-alt"></i>Ürünler</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_category_index') }}" > <i class="menu-icon fa fa-th"></i>Kategoriler</a>
+
+                </li>
+                <li>
+                    <a href="{{ path('user_index') }}"> <i class="menu-icon ti-user"></i>Üyeler </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_messages_index') }}"><i class="menu-icon ti-comment"></i>İletişim Mesajları </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_setting_index') }}"> <i class="menu-icon ti-settings"></i>Ayarlar </a>
+                </li>
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+  <!-- Header-->
+  <header id="header" class="header">
+
+      <div class="header-menu">
+
+          <div class="col-sm-7">
+
+          </div>
+
+          <div class="col-sm-5" style="padding: 15px; padding-right: 30px;">
+              <div class="user-area dropdown float-right">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+                      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                      Sayın, <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false" style="font-size: 20px;"><b>{{ app.user.name }}</b></a>
+                      {% else %}
+                          Login Olunmadı.
+                      {% endif %}
+                  </a>
+
+                  <div class="user-menu dropdown-menu">
+                      <a class="nav-link" href="{{ path('app_logout') }}"><i class="fa fa-power -off"></i>ÇIKIŞ</a>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+  </header><!-- /header -->
+  <br/><br/>
+  <hr/>
+

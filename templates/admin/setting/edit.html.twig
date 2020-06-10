@@ -1,0 +1,201 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card" style="padding:20px;">
+                        <h1 class="page-head-line">Edit Setting</h1>
+                        <section class="content">
+                            <div class="box">
+                            </div>
+
+
+                        </section>
+                        <form class="modal-form" method="post" style="margin-top: 20px;">
+
+                            <div class="card-body">
+                                <div class="default-tab">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link" id="tab1" data-toggle="tab" href="#genelbilgi" role="tab" aria-controls="genelbilgi" aria-selected="false">Genel Bilgiler</a>
+                                            <a class="nav-item nav-link" id="tab2" data-toggle="tab" href="#serverbilgi" role="tab" aria-controls="serverbilgi" aria-selected="false">Server Bilgileri</a>
+                                            <a class="nav-item nav-link " id="tab3" data-toggle="tab" href="#hakkımızda" role="tab" aria-controls="hakkımızda" aria-selected="true">Hakkımızda</a>
+                                            <a class="nav-item nav-link " id="tab4" data-toggle="tab" href="#iletişim" role="tab" aria-controls="iletişim" aria-selected="true">İletişim</a>
+                                            <a class="nav-item nav-link " id="tab5" data-toggle="tab" href="#referanslar" role="tab" aria-controls="referanslar" aria-selected="true">Referanslar</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                        <div class="tab-pane fade active show" id="genelbilgi" role="tabpanel" aria-labelledby="tab1">
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Title</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[title]" value="{{  setting.title  }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>keywords</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[keywords]" value="{{  setting.keywords  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>description</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" name="setting[description]" value="{{  setting.description  }}" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Company Name</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" name="setting[company]" value="{{  setting.company  }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Adress</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[address]" value="{{  setting.address  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Fax</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[fax]" value="{{  setting.fax  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label> Status</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="setting[status]" class="form-control">
+                                                        <option>{{ setting.status }}</option>
+                                                        <option>True</option>
+                                                        <option>False</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="serverbilgi" role="tabpanel" aria-labelledby="tab2">
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Email Server</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[smtpserver]" value="{{  setting.smtpserver  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[smtpemail]" value="{{  setting.smtpemail  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>Password</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[smtppassw]" value="{{  setting.smtppassw  }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label>SMTP Port</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="setting[smtpport]" value="{{  setting.smtpport  }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="hakkımızda" role="tabpanel" aria-labelledby="tab3">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <textarea id="aboutus" name="setting[aboutus]" rows="10" cols="85">{{  setting.aboutus  }}</textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="iletişim" role="tabpanel" aria-labelledby="tab4">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <textarea id="contact" name="setting[contact]" rows="10" cols="85">{{  setting.contact  }}</textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab-pane fade" id="referanslar" role="tabpanel" aria-labelledby="tab5">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <textarea id="referance" name="setting[referances]" rows="10" cols="100">{{  setting.referances  }}</textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <a href="{{ path('admin_setting_index') }}" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-arrow-left"> </span> Listeye Geri Dön</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-check"></span> Kaydet </button>
+                                </div>
+                            </div>
+                        </form>
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#aboutus' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#referance' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#contact' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

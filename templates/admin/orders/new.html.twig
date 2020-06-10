@@ -1,0 +1,16 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block sidebar %} {{ include('admin/include/leftsidebar.html.twig') }} {% endblock %}
+{% block title %}New Orders{% endblock %}
+
+{% block content %}
+<div class="section" style="margin-left: 30%">
+    <!-- container -->
+    <div class="container" >
+        <!-- row -->
+        <div class="row" >
+
+    {{ include('orders/_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

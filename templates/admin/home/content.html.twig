@@ -1,0 +1,37 @@
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-6">
+
+<table class="table table-striped mt-3">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>AD SOYAD</th>
+        <th>E-POSTA</th>
+        <th>KULLANICI ADI</th>
+        <th>PAROLA</th>
+        <th>TEL</th>
+        <th>DURUM</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td><a href="#">{{ user.id }}</a></td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
+            <td><i>Gizli</i></td>
+            <td>{{ user.phone }}</td>
+            <td><a href="{{ url('user_onay', {'id':user.id}) }}" class="btn btn-success">Onayla</a>
+                <a href="{{ url('admin_user_delete', {'id':user.id}) }}"
+                   class="btn btn-danger">Reddet</a></td>
+        </tr>
+        {% else %}
+        <td>No Records</td>
+    {% endfor %}
+    </tbody>
+</table>
+                </div></div></div></div>

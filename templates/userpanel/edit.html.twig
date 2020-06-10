@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block sidebar %} {{ include('home/usersidebar.html.twig') }} {% endblock %}
+{% block title %}Profil Düzenle{% endblock %}
+
+{% block content %}
+
+    {{ include('userpanel/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

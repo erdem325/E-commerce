@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar %} {{ include('home/sidebar.html.twig') }}{% endblock %}
+{% block content %}
+<div class="col-lg-9" style="margin-top: 10px">
+    <div class="categories_product_area">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="l_product_item">
+                        <div class="l_p_img">
+                            <img src="{{ asset('uploads') }}/images/{{ product.image }}" height="250px" width="400px">
+                        </div>
+                        <div class="l_p_text" style="height: 100px">
+                            <ul>
+                                <li><a class="add_cart_btn" href="{{ path('product_detail', {'id': product.id}) }}"><i class="fa fa-plus"></i> VIEW</a></li>
+                            </ul>
+                            <h4>{{ product.title }}</h4>
+                            <h5>
+                                <del>{{ product.sprice }} ₺</del>
+                                {{ product.pprice }} ₺
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,100 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+
+
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card" style="padding:20px;">
+                        <h1>Edit Category</h1>
+
+                        <form method="post" style="margin-top: 20px;">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>ParentId</label>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <select name="category[parentid]" class="form-control">
+                                        <optgroup label="Aktif Kategori">
+                                        <option value="{{ activeCat.id }}">{{  activeCat.title }}</option>
+                                        </optgroup>
+                                        <optgroup label="Seçilen Kategori">
+
+                                        <option>{{ category.parentid }}</option>
+                                        <option value="0">Ana Kategori</option>
+                                        {% for cat in catlist %}
+
+                                            <option value="{{ cat.id }}">{{ cat.title }}</option>
+                                        {% endfor %}
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>Title</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="category[title]"
+                                           value="{{ category.title }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>description</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="category[description]"
+                                               value="{{ category.description }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>keywords</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="category[keywords]"
+                                           value="{{ category.keywords }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label> Aktif Durum(Status)</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="category[status]" class="form-control">
+                                        <option>{{ category.status }}</option>
+                                        <option>True</option>
+                                        <option>False</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <a href="{{ path('admin_category_index') }}"
+                                       class="btn btn-primary btn-block"><span
+                                                class="glyphicon glyphicon-arrow-left"> </span> Listeye Geri Dön</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block"><span
+                                                class="glyphicon glyphicon-check"></span> Kaydet
+                                    </button>
+                                </div>
+                            </div>
+                        </form>    {{ include('admin/category/_delete_form.html.twig') }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

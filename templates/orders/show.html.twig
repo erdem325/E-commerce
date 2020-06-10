@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% block sidebar %} {{ include('home/usersidebar.html.twig') }} {% endblock %}
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+
+    <h1>Sipariş Detayı</h1>
+
+    <table class="table table-striped mt-3">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ order.userid }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ order.amount }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ order.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ order.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ order.city }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ order.phone }}</td>
+            </tr>
+            <tr>
+                <th>Shipinfo</th>
+                <td>{{ order.shipinfo }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ order.status }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ order.note }}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+        <h1 style="font-size: 30px;">Sepet Detayı</h1>
+        <br/>
+        <table class="table table-striped mt-3">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>ÜRÜN</td>
+                <td>BİRİM FİYATI</td>
+                <td>ADET</td>
+                <td>FİYAT</td>
+                <td>DURUM</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% set count = 1 %}
+            {% for orderproduct in orderdetail %}
+                <tr>
+                    <td>{{ count }}</td>
+                    <td>{{ orderproduct.name }}</td>
+                    <td>{{ orderproduct.price }}</td>
+                    <td>{{ orderproduct.quantity }}</td>
+                    <td>{{ orderproduct.amount }}</td>
+                    <td>{{ orderproduct.status }}</td>
+                </tr>
+                {% set count = count + 1 %}
+            {% else %}
+                <tr>
+                    <td colspan="5"><i style="font-size: 15px; color: red;">Siparişiniz bulunmuyor.</i></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <a href="{{ path('orders_index') }}" class="btn btn-primary btn-block">back to list</a>
+
+    </div></div></div>
+
+{% endblock %}

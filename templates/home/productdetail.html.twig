@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block sidebar %} {{ include('home/sidebar.html.twig') }}{% endblock %}
+{% block content %}
+    <div class="col-md-9">
+        <section class="product_details_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="product_details_slider">
+                            <div id="product_slider2" class="rev_slider" data-version="5.3.1.6">
+                                <ul>	<!-- SLIDE  -->
+                                    {% set count = 0 %}
+                                    {% for rs in images %}
+                                        <li data-index="rs-{{ count }}" data-transition="scaledownfromleft" data-slotamount="default"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="{{ asset('uploads') }}/images/{{ rs.image }}"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Umbrella" data-param1="September 7, 2015" data-param2="Alfon Much, The Precious Stones" data-description="">
+                                            <!-- MAIN IMAGE -->
+                                            <img src="{{ asset('uploads') }}/images/{{ rs.image }}" style="width: 100px;height: 100px"  alt=""  width="1920" height="1080" data-lazyload="{{ asset('uploads') }}/images/{{ rs.image }}" data-bgposition="center center" data-bgfit="contain" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                            <!-- LAYERS -->
+                                        </li>
+                                        {% set count = count + 1 %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="product_details_text">
+                            <h3>{{ data[0].title }}</h3>
+                            <h6>{{ data[0].amount }} adet stokta mevcut</h6>
+                            <h4>
+                                <del style="color: #9f191f;">{{ data[0].sprice }} ₺</del>
+                                {{ data[0].pprice }} ₺
+                            </h4>
+                            <div class="quantity">
+                                <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path('shopcart_new') }}" method="post">
+                                    <div class="custom">
+                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon_minus-06"></i></button>
+                                        <input type="text" name="shopcart[quantity]" id="sst" maxlength="{{ data[0].amount }}" value="01" title="Quantity:" class="input-text qty">
+                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="icon_plus"></i></button>
+                                    </div>
+                                    <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+                                    <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                                    <button type="submit" class="add_cart_btn "><span class="glyphicon-shopping-cart"></span>Sepete Ekle</button>
+                                </form>
+                            </div>
+                            {{ data[0].detail|raw }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}
+

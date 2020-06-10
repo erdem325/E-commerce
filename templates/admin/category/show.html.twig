@@ -1,0 +1,74 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+
+
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card" style="padding:20px;">
+                        <h1>Category</h1>
+
+
+                        <table class="table" style="margin-top: 20px;">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ category.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Parentid</th>
+                                <td>{{ category.parentid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <td>{{ category.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Keywords</th>
+                                <td>{{ category.keywords }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ category.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ category.status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Created_at</th>
+                                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Update_at</th>
+                                <td>{{ category.updateAt ? category.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <div class="row">
+                        <div class="col-md-6"><a href="{{ path('admin_category_index') }}" class="btn btn-primary btn-block">back to list</a></div>
+                        <div class="col-md-6"> <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-success btn-block">edit</a></div>
+                    </div>
+
+                        <br>
+                        {{ include('admin/category/_delete_form.html.twig') }}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
